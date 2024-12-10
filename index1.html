@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de periódicos de España</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <h1>Clasificación ideológica de periódicos de España</h1>
+    <!-- Estilos para el periodico, imagen, agregar botones y estilo de la respuesta del servidor -->
+    <div class="periodicos" id="periodicos"></div>
+    <div class="imagen-periodico" id="imagen-periodico"></div>
+    <button onclick="respuesta_usuario('Izquierda')">Izquierda</button>
+    <button onclick="respuesta_usuario('Derecha')">Derecha</button>
+    <div id="comentario"></div>
+    <div id="mensaje-final"></div>
+
+    <script>
+        // List de periodicos
+        let periodicos = [
+            { name: "Eldiario.es", classification: "Izquierda", image: "https://usuarios.eldiario.es/images/metalogo.png" },
+            { name: "Elpais.com", classification: "Izquierda", image: "https://recursos.audiense.com/hs-fs/hubfs/Resources%20Website%20(Migration)/El_Pais_logo_small.png?width=210&name=El_Pais_logo_small.png" },
+            { name: "Elmundo.es", classification: "Derecha", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTegaOtDwGJTf3Z2kBTNiUo0A7TrzlEssKRA&s" },
+            { name: "ABC.es", classification: "Derecha", image: "https://s2.abcstatics.com/assets/latest/img/rrss/abc/facebook/avatar-facebook.png" }
+        ];
+        let periodicoactual = 0;
+    
+        // Mostrar el periódico actual
+        function Enseñarperiodico() {
+            const periodicosDiv = document.getElementById('periodicos');
+            const imageDiv = document.getElementById('imagen-periodico');
+            const llamarperiodico = periodicos[periodicoactual];
+    
+            // Mostrar el nombre del periódico
+            periodicosDiv.textContent = llamarperiodico.name;
+    
+            // Reemplazar imagen
+            imageDiv.innerHTML = ""; // Usar una cadena vacía para mayor claridad
+            const foto_periodico = document.createElement('img');
+            foto_periodico.src = llamarperiodico.image;
+            foto_periodico.alt = llamarperiodico.name;
+            foto_periodico.style.display = "block";
+            foto_periodico.classList.add('imagen-periodico');
+            imageDiv.appendChild(foto_periodico);
+        }
+    
+        // Respuesta de usuario
+        function respuesta_usuario(opcion) {
+            const llamarperiodico = periodicos[periodicoactual];
+            const comentarioDiv = document.getElementById("comentario");
+            const mensajeFinal = document.getElementById("mensaje-final");
+            const periodicosDiv = document.getElementById("periodicos");
+            const imageDiv = document.getElementById("imagen-periodico");
+            const buttons = document.querySelectorAll('button')
+    
+            // Output de respuesta
+            if (llamarperiodico.classification === opcion) {
+                comentarioDiv.innerHTML = `
+                    ✅ ¡Correcto!
+                    <br>
+                    <img src="https://media1.tenor.com/m/MRM58hVWgn4AAAAd/cristiano-cristiano-ronaldo.gif" alt="Cristiano SIU" style="max-width: 400px;">
+                `;
+                comentarioDiv.style.color = "green";
+            } else {
+                comentarioDiv.innerHTML = `
+                    ❌ ¡Incorrecto!
+                    <br>
+                    <img src="https://media.tenor.com/9_R-1X9M2tcAAAAM/hyutism-soccer-crying.gif" alt="Cristiano Sad" style="max-width: 800px;">
+                `;
+                comentarioDiv.style.color = "red";
+            }
+    
+            comentarioDiv.style.display = "block";
+    
+            // Pasar a prox periodico
+            setTimeout(() => {
+                comentarioDiv.style.display = "none";
+                if (periodicoactual < periodicos.length - 1) {
+                    periodicoactual++
+                    Enseñarperiodico();
+                } else {
+                    mensajeFinal.textContent = "¡Has terminado con todos los periódicos!";
+                    mensajeFinal.style.display = "block"
+                    periodicosDiv.style.display = "none";
+                    imageDiv.style.display = "none";
+                    buttons.forEach(button => button.style.display = "none");
+                }
+            }, 2000);
+        }
+    
+        // Cargar el primer periódico al inicio
+        window.onload = Enseñarperiodico;
+    </script>
+    
+</body>
+</html>
+
+

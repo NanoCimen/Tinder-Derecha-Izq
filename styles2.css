@@ -1,0 +1,75 @@
+/* Estilo de body*/
+body {
+    background: linear-gradient(135deg, #f5040c, blue);
+    font-family: 'Times New Roman', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #333;
+}
+
+/* Estilo del header */
+h1 {
+    font-size: 2.5em;
+    color: yellow;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+}
+
+/* Estilo del newspaper */
+.periodicos {
+    background-color: white;
+    padding: 15px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 1.8em;
+    margin: 20px 0;
+    color: black;
+    animation: bounce 1s infinite alternate;
+}
+
+.peridicos:hover {
+    transform: scale(1.05);
+}
+
+/* botones */
+button {
+    background: linear-gradient(45deg, #6c5ce7, #74b9ff);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(60deg, red, blue);
+    transform: scale(1.1);
+}
+
+.imagen-periodico {
+    margin: 20px auto;
+    display: block;
+    max-width: 300px;
+    border: #333;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.imagen-periodico:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+#mensaje-final {
+    display: none;
+    font-size: 1.5em;
+    color: yellow;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin: 10px 0;;
+}
